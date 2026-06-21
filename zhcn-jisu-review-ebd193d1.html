@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>极速体育 · 快速识别 · 流畅体验</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #ffe8d6 0%, #fdd8b5 50%, #fcc89a 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.8rem 1.2rem;
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1200px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+    }
+
+    /* 暖色卡片风格 */
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 2.2rem;
+      padding: 2.2rem 2.4rem;
+      box-shadow: 0 8px 28px rgba(200, 120, 60, 0.12), 0 2px 6px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 32px rgba(190, 100, 40, 0.16);
+    }
+
+    h1, h2, h3 {
+      font-weight: 550;
+      letter-spacing: -0.01em;
+      color: #3b2b1c;
+    }
+
+    h1 {
+      font-size: 2.7rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+      border-left: 5px solid #d9996b;
+      padding-left: 1rem;
+    }
+
+    p, li {
+      color: #3c2e22;
+      font-size: 1.05rem;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .hero-text {
+      flex: 2 1 280px;
+    }
+
+    .hero-visual {
+      flex: 1 1 160px;
+      background: rgba(215, 145, 85, 0.15);
+      border-radius: 60% 40% 50% 30% / 40% 50% 50% 60%;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      color: #a76f45;
+      font-weight: 300;
+      opacity: 0.7;
+    }
+
+    .tagline {
+      font-size: 1.25rem;
+      color: #714f32;
+      margin: 0.8rem 0 1.4rem;
+    }
+
+    .btn-soft {
+      display: inline-block;
+      background: #d9996b;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.65rem 2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      font-size: 1rem;
+      transition: background 0.2s, transform 0.1s;
+      box-shadow: 0 2px 8px rgba(190, 120, 60, 0.2);
+      border: none;
+      cursor: default;
+      pointer-events: none;  /* 仅作视觉示意，不是可点击按钮，避免诱导 */
+    }
+
+    .btn-soft:hover {
+      background: #c48354;
+    }
+
+    .advantage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .advantage-item {
+      background: rgba(255, 245, 235, 0.6);
+      border-radius: 1.4rem;
+      padding: 1.3rem 1.4rem;
+      border: 1px solid rgba(200, 140, 90, 0.12);
+    }
+
+    .advantage-item h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .advantage-item p {
+      font-size: 0.96rem;
+      color: #5d4530;
+    }
+
+    .desc-two-col {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .desc-two-col > div {
+      flex: 1 1 200px;
+    }
+
+    .desc-two-col ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .desc-two-col li {
+      margin-bottom: 0.6rem;
+      padding-left: 1.6rem;
+      position: relative;
+    }
+
+    .desc-two-col li::before {
+      content: "⚡";
+      position: absolute;
+      left: 0;
+      color: #b77a4f;
+      font-size: 1.1rem;
+    }
+
+    .faq-preview {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-q {
+      font-weight: 550;
+      color: #3b2b1c;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .faq-q::before {
+      content: "▸";
+      color: #d9996b;
+      margin-right: 0.6rem;
+      font-size: 1.2rem;
+    }
+
+    .faq-a {
+      padding-left: 1.8rem;
+      color: #5a4532;
+      font-size: 0.98rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.6rem 2.8rem;
+      padding: 1.2rem 0 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .footer-links a {
+      color: #6f4f34;
+      text-decoration: none;
+      border-bottom: 1px dotted #c99770;
+      transition: border 0.2s, color 0.2s;
+    }
+
+    .footer-links a:hover {
+      border-bottom: 1px solid #8c623f;
+      color: #3b2b1c;
+    }
+
+    .inline-link {
+      color: #8c623f;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #d1a17a;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .inline-link:hover {
+      color: #b77a4f;
+      text-decoration-color: #b77a4f;
+    }
+
+    .muted-note {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #7f6753;
+      margin-top: 0.8rem;
+      border-top: 1px solid rgba(180, 130, 80, 0.15);
+      padding-top: 1.2rem;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 1.6rem 1.2rem;
+        border-radius: 1.6rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.4rem;
+      }
+      .hero-visual {
+        min-height: 80px;
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- HERO 区域：快速识别用途 -->
+    <div class="card">
+      <div class="hero">
+        <div class="hero-text">
+          <h1>一眼认出 · 极速体育</h1>
+          <div class="tagline">如果你想找的是一处能快速浏览赛事动态、比分变化和运动资讯的地方，这里就是起点。</div>
+          <p style="margin-top: 0.2rem;">没有冗余入口，没有层层跳转。打开页面，核心信息就在眼前。<br>
+          对每一位想节省时间的运动爱好者来说，<a href="https://zhcn-jisu.com" class="inline-link">极速体育</a> 就是那个可以直接切入主题的选择。</p>
+        </div>
+        <div class="hero-visual">🏃⚡</div>
+      </div>
+    </div>
+
+    <!-- 优势区：为什么选它 -->
+    <div class="card">
+      <h2>优势 · 一看就懂</h2>
+      <div class="advantage-grid">
+        <div class="advantage-item">
+          <h3>⚡ 即时</h3>
+          <p>信息更新节奏明确，不拖沓。从赛程到比分，尽量缩短你获取结果的时间。</p>
+        </div>
+        <div class="advantage-item">
+          <h3>📋 聚焦</h3>
+          <p>页面围绕体育内容组织，没有无关干扰。你想了解的项目、联赛、数据，层次清楚。</p>
+        </div>
+        <div class="advantage-item">
+          <h3>🧭 直觉导航</h3>
+          <p>分类与入口都采用常见体育术语，减少学习成本。即使第一次来，也能快速定位。</p>
+        </div>
+        <div class="advantage-item">
+          <h3>📱 轻量适应</h3>
+          <p>在手机、平板或电脑上，排版自动适配，阅读体验保持一致。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 说明区：场景 + 内容结构 -->
+    <div class="card">
+      <h2>它适合哪些场景？</h2>
+      <div class="desc-two-col">
+        <div>
+          <p style="font-weight: 500; margin-bottom: 0.8rem;">日常使用场景</p>
+          <ul>
+            <li>通勤时快速刷新比赛结果</li>
+            <li>午休间隙查看联赛积分变化</li>
+            <li>和朋友聊球前确认最新动态</li>
+            <li>关注特定队伍或选手的赛程</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-weight: 500; margin-bottom: 0.8rem;">内容覆盖方向</p>
+          <ul>
+            <li>足球、篮球等主流运动</li>
+            <li>实时比分与关键事件</li>
+            <li>赛事预告与历史交锋</li>
+            <li>简洁的排名与数据面板</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top: 1.4rem; background: rgba(215, 150, 80, 0.08); padding: 0.8rem 1rem; border-radius: 1rem;">
+        💡 提示：你可以直接使用 <a href="https://zhcn-jisu.com" class="inline-link">极速体育</a> 作为日常查询体育信息的快捷方式，它不追求面面俱到，而是让“快速识别”成为第一印象。
+      </p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="card">
+      <h2>常见疑问 · 快速了解</h2>
+      <div class="faq-preview">
+        <div>
+          <div class="faq-q">需要注册或登录才能看吗？</div>
+          <div class="faq-a">大部分内容无需注册即可浏览。部分个性化功能可能涉及账号，但基础信息是开放的。</div>
+        </div>
+        <div>
+          <div class="faq-q">数据更新频率如何？</div>
+          <div class="faq-a">核心比赛数据在赛事进行期间保持持续刷新，赛后结果会尽快同步。具体节奏视赛事来源而定。</div>
+        </div>
+        <div>
+          <div class="faq-q">是否包含所有体育项目？</div>
+          <div class="faq-a">主要覆盖关注度较高的热门项目，并逐步扩展。如果你有特别想看到的项目，可以通过站点反馈渠道告知。</div>
+        </div>
+        <div style="margin-top: 0.2rem;">
+          <div class="faq-q">移动端和电脑端体验一样吗？</div>
+          <div class="faq-a">界面会自适应屏幕尺寸，核心功能保持一致。部分复杂视图在宽屏上显示更完整，但手机端同样可完成主要操作。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部链接区域 -->
+    <div class="card" style="padding: 1.6rem 2rem;">
+      <div class="footer-links">
+        <a href="https://zhcn-jisu.com">极速体育</a>
+        <a href="#">赛事日历</a>
+        <a href="#">热门联赛</a>
+        <a href="#">用户指南</a>
+        <a href="#">关于本站</a>
+      </div>
+      <div class="muted-note">
+        简洁 · 直接 · 为你节省每一次查找的时间
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
