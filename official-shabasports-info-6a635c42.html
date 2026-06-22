@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沙巴体育 · 日常查询与对照笔记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f2f4f6;
+            font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Sans', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.65;
+            color: #1e2a36;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        /* hero 开场 */
+        .hero {
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
+            padding: 2.6rem 2.2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e9edf0;
+            transition: box-shadow 0.2s;
+        }
+        .hero:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+        .hero .sub {
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            color: #5d6f7e;
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+        .hero h1 {
+            font-size: 1.9rem;
+            font-weight: 500;
+            color: #0f1c2b;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.3px;
+        }
+        .hero p {
+            font-size: 1.05rem;
+            color: #2a3a4a;
+            max-width: 600px;
+        }
+        .hero p a {
+            color: #22577e;
+            text-decoration: none;
+            border-bottom: 1.5px dotted #98b5ce;
+            font-weight: 500;
+            transition: border 0.15s, color 0.15s;
+        }
+        .hero p a:hover {
+            border-bottom: 2px solid #1d4d6e;
+            color: #0f2b40;
+        }
+        /* 卡片风格 */
+        .card {
+            background: #ffffff;
+            border-radius: 22px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02), 0 0.5px 1.5px rgba(0, 0, 0, 0.02);
+            padding: 2rem 2rem 2.2rem;
+            margin-bottom: 1.8rem;
+            border: 1px solid #e3e8ed;
+            transition: box-shadow 0.2s, transform 0.15s;
+        }
+        .card:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+            transform: translateY(-1px);
+        }
+        .card h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #182b3a;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #eef2f5;
+            letter-spacing: -0.2px;
+        }
+        .card h2 i {
+            font-style: normal;
+            background: #e6eef4;
+            padding: 0.1rem 0.4rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #1f4a68;
+            margin-left: 6px;
+        }
+        .card p {
+            margin-bottom: 1rem;
+            color: #2c3d4c;
+        }
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.2rem;
+            margin: 1rem 0 0.2rem;
+        }
+        .feature-list li {
+            background: #f4f7fa;
+            border-radius: 40px;
+            padding: 0.3rem 1.1rem 0.3rem 1.3rem;
+            font-size: 0.95rem;
+            color: #1c3447;
+            border: 1px solid #dde4eb;
+            display: inline-flex;
+            align-items: center;
+        }
+        .feature-list li::before {
+            content: "▹";
+            color: #3e6d8f;
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+        .scene-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1.2rem 0 0.2rem;
+        }
+        .scene-item {
+            background: #f8fafc;
+            border-radius: 18px;
+            padding: 1rem 1.2rem;
+            border: 1px solid #e2e9f0;
+        }
+        .scene-item h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #1b3142;
+            margin-bottom: 0.3rem;
+        }
+        .scene-item p {
+            font-size: 0.92rem;
+            margin-bottom: 0;
+            color: #3d5364;
+        }
+        .faq-mini {
+            background: #f6f9fc;
+            border-radius: 18px;
+            padding: 1.2rem 1.5rem;
+            margin-top: 1.2rem;
+            border-left: 3px solid #b6ccdb;
+        }
+        .faq-mini strong {
+            color: #0f2a3e;
+        }
+        .footer-note {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #607585;
+            padding: 2rem 0.5rem 0.8rem;
+            border-top: 1px solid #dbe2e9;
+            margin-top: 1rem;
+        }
+        .footer-note a {
+            color: #2d5a7a;
+            text-decoration: none;
+            border-bottom: 1px dotted #9bb5cc;
+        }
+        .footer-note a:hover {
+            border-bottom: 1px solid #0b334b;
+        }
+        @media (max-width: 600px) {
+            body { padding: 1rem 0.8rem; }
+            .hero { padding: 1.8rem 1.2rem; }
+            .hero h1 { font-size: 1.5rem; }
+            .card { padding: 1.5rem 1.2rem; }
+            .scene-grid { grid-template-columns: 1fr; }
+            .feature-list li { font-size: 0.88rem; padding: 0.2rem 0.9rem; }
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #dee5ec;
+            margin: 1.8rem 0 0.2rem;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 开场短句 hero -->
+    <div class="hero">
+        <span class="sub">— 日常查询 · 对照笔记 —</span>
+        <h1>从一次查询开始</h1>
+        <p>
+            有时候只是随手搜一个名字，然后发现越看越细。最近几次整理体育数据与赛事信息时，频繁遇见
+            <a href="https://official-shabasports.com">沙巴体育</a>这个条目。
+            起初以为是普通索引，后来留意到其内容覆盖面、更新节奏和可对照性都超出预期。
+            于是慢慢把它当作一个日常参考刻度。
+        </p>
+    </div>
+
+    <!-- 承接段落：对照与延伸 -->
+    <div class="card">
+        <h2>对照 · 不止一个方向 <i>延伸阅读</i></h2>
+        <p>
+            我习惯把几个平台并排打开，来回切换着看数据——比分、赛程、历史交锋、球员动态。
+            在反复对比中，<a href="https://official-shabasports.com">沙巴体育</a>的条目往往是最先稳定下来的那一个。
+            不是因为它“最全”，而是因为它常常提供一条清晰的线索：从一场比赛延伸到联赛，从联赛再延伸到赛季纵向对比。
+            对于只想快速确认某个细节的人来说，这种结构很友好。
+        </p>
+        <p>
+            另外，它的界面没有过多修饰，信息层级简单，减少了干扰。
+            有时候用手机快速查阅，加载速度和排版也都跟得上。
+            如果说有什么遗憾，就是部分冷门联赛的深度数据还可以再补充——不过这并不影响日常使用。
+        </p>
+    </div>
+
+    <!-- 特点列表 用卡片+列表 -->
+    <div class="card">
+        <h2>几个顺手的特点</h2>
+        <ul class="feature-list">
+            <li>赛事覆盖宽，主流与次级联赛均有条目</li>
+            <li>更新节奏稳定，临场数据变化及时</li>
+            <li>页面结构一致，跨项目对照不费力</li>
+            <li>历史数据可以回溯数个赛季</li>
+            <li>无过度动效，专注内容本身</li>
+        </ul>
+        <p style="margin-top: 1rem; font-size: 0.95rem; color: #3b5265;">
+            这些特点并不华丽，但日常查询时恰好够用。尤其是跨联赛横向对比时，统一的信息框架能节省不少时间。
+        </p>
+    </div>
+
+    <!-- 场景卡片：使用场景描述 -->
+    <div class="card">
+        <h2>实际场景</h2>
+        <div class="scene-grid">
+            <div class="scene-item">
+                <h3>周末赛前排查</h3>
+                <p>周六下午，把感兴趣的几场联赛球员名单、伤停信息过一遍，<br>对照着不同来源做标记。</p>
+            </div>
+            <div class="scene-item">
+                <h3>赛后数据补录</h3>
+                <p>比赛结束后整理个人笔记，用平台数据核验射门、控球率等关键项，<br>补充遗漏的细节。</p>
+            </div>
+            <div class="scene-item">
+                <h3>赛季趋势描摹</h3>
+                <p>翻看过去几轮的数据，留意球队状态起伏、主客场差异，<br>为后续观察积累参照。</p>
+            </div>
+            <div class="scene-item">
+                <h3>延伸阅读入口</h3>
+                <p>从某场比赛的页面跳转到相关联赛概览，发现之前没注意过的对阵规律。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 提示 / FAQ 摘要 -->
+    <div class="card">
+        <h2>偶尔遇到的疑惑 <span style="font-weight: normal; font-size: 0.9rem; color: #4a6379;">— 几个常见问题摘要</span></h2>
+        <div class="faq-mini">
+            <p><strong>Q：数据源会频繁变动吗？</strong><br>
+            整体稳定，但个别实时数据在极端情况下会有短暂延迟，建议以官方最终记录为准。</p>
+        </div>
+        <div class="faq-mini" style="margin-top: 0.8rem; border-left-color: #cbdae6;">
+            <p><strong>Q：移动端浏览体验如何？</strong><br>
+            适配良好，表格会自动折行，关键操作按钮大小适中，日常快速查阅够用。</p>
+        </div>
+        <div class="faq-mini" style="margin-top: 0.8rem; border-left-color: #c2d4e0;">
+            <p><strong>Q：是否适合深度数据分析？</strong><br>
+            适合日常参考与趋势观察，若需专业统计建模可配合其他数据源交叉使用。</p>
+        </div>
+        <p style="margin-top: 1.2rem; font-size: 0.92rem; color: #3a556a;">
+            总体而言，它更像一个可靠的查询起始点，而不是终点。对我来说这就够了。
+        </p>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="hero" style="padding: 1.8rem 2rem; margin-bottom: 0.5rem;">
+        <p style="font-size: 1rem; margin-bottom: 0.3rem;">
+            从随手搜索到形成习惯，中间隔着的往往只是几次顺畅的对照。
+        </p>
+        <p style="font-size: 1rem; color: #364f63;">
+            如果你也经常在几个页面之间切换、比较、记录，或许可以试试把
+            <a href="https://official-shabasports.com">沙巴体育</a>放进你的日常书签夹。
+            不必抱着“最好”的期待，就当多一个安静的参考坐标。
+        </p>
+    </div>
+
+    <hr>
+    <div class="footer-note">
+        <span>记录于个人查询笔记 · 内容仅供日常参考</span>
+    </div>
+
+</div>
+</body>
+</html>
